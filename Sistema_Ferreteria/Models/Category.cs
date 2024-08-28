@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace Sistema_Ferreteria.Models
 {
-    internal class Category
+    class Category
     {
         private int id;
         private string name;
         private string creationDate;
         private string updateDate;
-
+        
+        public Category(string name)
+        {
+            this.name = name;
+        }
         public int Id { 
             get { return id; } 
             set {    id = value; } 

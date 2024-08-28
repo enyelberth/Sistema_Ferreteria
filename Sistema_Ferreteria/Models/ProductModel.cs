@@ -14,15 +14,23 @@ namespace Sistema_Ferreteria.models
         private float salePrice;
         private int amount;
         private int category;
-        private int creationDate;
-        private int updateDate;
+        private DateTime creationDate;
+        private DateTime updateDate;
 
-
-
-        public int Id {
-            get { return id; } 
-            set{ id = value; }
+        public ProductModel(string name,float buyPrice,float salePrice,int amount,int Category)
+        {
+            //this.id = 1;
+            this.name = name;
+            this.buyPrice = buyPrice;
+            this.salePrice = salePrice;
+            this.amount = amount;
+            //this.category = Category;
         }
+
+        //public int Id {
+        //    get { return id; } 
+        //    set{ id = value; }
+        //}
         public string Name {  
             get { return name; } 
             set{ name = value; }
@@ -34,15 +42,15 @@ namespace Sistema_Ferreteria.models
             get {  return salePrice; } 
             set { salePrice = value; } 
         }
-        public int Category { 
-            get { return category; }  
-            set { category = value; }
-        } 
-        public int CreationDate { 
+        //public int Category { 
+        //    get { return category; }  
+        //    set { category = value; }
+        //} 
+        public DateTime CreationDate { 
             get { return creationDate; }
             set { creationDate = value; } 
         }
-        public int UpdateDate { 
+        public DateTime UpdateDate { 
             get {   return updateDate; } 
             set { updateDate = value; } 
         }
