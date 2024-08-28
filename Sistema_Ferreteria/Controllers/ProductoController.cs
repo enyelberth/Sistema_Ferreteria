@@ -8,5 +8,6 @@ namespace Sistema_Ferreteria.Controllers
 {
     internal class ProductoController
     {
+        
     }
 }
