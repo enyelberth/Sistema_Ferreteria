@@ -16,5 +16,10 @@ namespace Sistema_Ferreteria.Views
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
