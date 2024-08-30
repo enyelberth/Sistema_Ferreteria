@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_Ferreteria.Views.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using System.Windows.Forms;
 
 namespace Sistema_Ferreteria
 {
+
     internal static class Program
     {
         /// <summary>
@@ -16,7 +18,7 @@ namespace Sistema_Ferreteria
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new LoadArchive());
         }
     }
 }

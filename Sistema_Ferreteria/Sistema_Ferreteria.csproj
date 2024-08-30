@@ -81,6 +81,12 @@
     <Compile Include="Views\Products\EditProductForm.Designer.cs">
       <DependentUpon>EditProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Products\SearchProductTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Products\SearchProductTable.Designer.cs">
+      <DependentUpon>SearchProductTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UI\LoadArchive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Products\EditProductForm.resx">
       <DependentUpon>EditProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Products\SearchProductTable.resx">
+      <DependentUpon>SearchProductTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UI\LoadArchive.resx">
       <DependentUpon>LoadArchive.cs</DependentUpon>
