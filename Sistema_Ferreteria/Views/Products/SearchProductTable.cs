@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sistema_Ferreteria.Views
+namespace Sistema_Ferreteria.Views.Products
 {
-    public partial class CategoryTable : Form
+    public partial class SearchProductTable : Form
     {
-        public CategoryTable()
+        public SearchProductTable()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
