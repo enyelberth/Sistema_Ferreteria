@@ -16,5 +16,26 @@ namespace Sistema_Ferreteria.Views.UI
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                // Configurar el cuadro de diálogo
+                openFileDialog.Title = "Selecciona un archivo de inventario";
+                openFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    ProductTable productTable = new ProductTable();
+
+                    
+                    productTable.Show();
+
+                    this.Hide();
+                    
+                }
+            }
+        }
     }
 }

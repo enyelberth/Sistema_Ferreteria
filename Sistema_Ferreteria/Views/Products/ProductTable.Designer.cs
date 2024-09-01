@@ -120,6 +120,8 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(843, 387);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // textBox1
             // 
@@ -141,6 +143,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Crear Producto";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
@@ -155,11 +158,13 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Buscar Producto";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(750, 175);
+            this.textBox2.Location = new System.Drawing.Point(752, 175);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(60, 20);
             this.textBox2.TabIndex = 5;
             // 
@@ -176,6 +181,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "+";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button4
             // 
@@ -184,12 +190,13 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.Control;
-            this.button4.Location = new System.Drawing.Point(680, 167);
+            this.button4.Location = new System.Drawing.Point(685, 167);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(48, 35);
             this.button4.TabIndex = 7;
             this.button4.Text = "-";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
@@ -197,9 +204,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(34, 118);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(544, 20);
+            this.label1.Size = new System.Drawing.Size(532, 20);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Haga click en una fila para Editar la cantidad y 2 click para editar el Producto";
+            this.label1.Text = "Haga click en un ID para Editar la cantidad y 2 click para editar el Producto";
             // 
             // label2
             // 
@@ -224,6 +231,7 @@
             this.button5.TabIndex = 10;
             this.button5.Text = "Iniciar Sesion";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -238,6 +246,7 @@
             this.button6.TabIndex = 11;
             this.button6.Text = "Ver Categorias";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // ProductTable
             // 
@@ -257,6 +266,8 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "ProductTable";
             this.Text = "ProductTable";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductTable_FormClosing);
+            this.Load += new System.EventHandler(this.ProductTable_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

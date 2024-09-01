@@ -17,9 +17,21 @@ namespace Sistema_Ferreteria.Views
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+            //funciones
+
+        private void handleSubmit()
         {
 
+        }
+
+
+            //eventos
+
+        //crear producto
+        private void button1_Click(object sender, EventArgs e)
+        {
+            handleSubmit();
         }
     }
 }
