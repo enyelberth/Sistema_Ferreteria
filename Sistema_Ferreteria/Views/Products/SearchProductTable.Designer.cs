@@ -59,6 +59,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Volver";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -83,6 +84,7 @@
             this.button4.TabIndex = 12;
             this.button4.Text = "-";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
@@ -97,6 +99,7 @@
             this.button2.TabIndex = 11;
             this.button2.Text = "+";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox2
             // 
@@ -137,6 +140,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(843, 387);
             this.dataGridView1.TabIndex = 15;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // ID
             // 
@@ -200,6 +204,7 @@
             this.Controls.Add(this.button1);
             this.Name = "SearchProductTable";
             this.Text = "SearchProductTable";
+            this.Load += new System.EventHandler(this.SearchProductTable_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
