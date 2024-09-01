@@ -38,8 +38,13 @@ namespace Sistema_Ferreteria.Views
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            EditCategoryForm editCategoryForm = new EditCategoryForm();
-            editCategoryForm.ShowDialog();
+
+            if (e.RowIndex >= 0)
+            {
+                EditCategoryForm editCategoryForm = new EditCategoryForm();
+                editCategoryForm.ShowDialog();
+            }
+            
         }
     }
 }
