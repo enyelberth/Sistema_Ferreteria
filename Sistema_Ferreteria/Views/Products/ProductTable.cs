@@ -97,9 +97,13 @@ namespace Sistema_Ferreteria.Views
         //doble click datagridview
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                EditProductForm editProductForm = new EditProductForm();
+                editProductForm.ShowDialog();
+            }
 
-            EditProductForm editProductForm = new EditProductForm();
-            editProductForm.ShowDialog();
+            
         }
 
         //reducir cantidad
