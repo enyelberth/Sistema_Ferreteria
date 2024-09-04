@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sistema_Ferreteria.Models
 {
@@ -10,28 +6,48 @@ namespace Sistema_Ferreteria.Models
     {
         private int id;
         private string name;
-        private string creationDate;
-        private string updateDate;
-        
-        public Category(string name)
+        private DateTime creationDate;
+        private DateTime updateDate;
+
+        // Constructor 
+        public Category(int id, string name)
         {
+            this.id = id;
             this.name = name;
+            this.creationDate = DateTime.Now; 
+            this.updateDate = DateTime.Now; 
         }
-        public int Id { 
-            get { return id; } 
-            set {    id = value; } 
+
+        // Propiedades
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
         }
-        public string Name {
+
+        public string Name
+        {
             get { return name; }
-            set { name = value; } 
+            set { name = value; }
         }
-        public string CreationDate { 
-            get { return creationDate; } 
-            set {    creationDate = value; } 
+
+        public DateTime CreationDate
+        {
+            get { return creationDate; }
+            set { creationDate = value; }
         }
-        public string UpdateDate { 
+
+        public DateTime UpdateDate
+        {
             get { return updateDate; }
             set { updateDate = value; }
+        }
+
+        // Método para actualizar la categoría
+        public void Update(string newName)
+        {
+            this.name = newName;
+            this.updateDate = DateTime.Now; // Actualiza la fecha al momento de la modificación
         }
     }
 }

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sistema_Ferreteria.models
+namespace Sistema_Ferreteria.Models // Asegúrate de que el nombre del espacio de nombres sea correcto
 {
-    class ProductModel
+    public class ProductModel
     {
-        private int id;
+        // Campos privados
+        private string id;
         private string name;
         private float buyPrice;
         private float salePrice;
@@ -17,42 +14,66 @@ namespace Sistema_Ferreteria.models
         private DateTime creationDate;
         private DateTime updateDate;
 
-        public ProductModel(string name,float buyPrice,float salePrice,int amount,int Category)
+        // Constructor
+        public ProductModel(string id, string name, float buyPrice, float salePrice, int amount, int category)
         {
-            //this.id = 1;
+            this.id = id;
             this.name = name;
             this.buyPrice = buyPrice;
             this.salePrice = salePrice;
             this.amount = amount;
-            //this.category = Category;
+            this.category = category; 
+            this.creationDate = DateTime.Now.Date; 
+            this.updateDate = DateTime.Now.Date; 
         }
 
-        //public int Id {
-        //    get { return id; } 
-        //    set{ id = value; }
-        //}
-        public string Name {  
-            get { return name; } 
-            set{ name = value; }
+        // Propiedades públicas
+        public string Id
+        {
+            get { return id; }
+            set { id = value; }
         }
-        public float BuyPrice {
-            get { return buyPrice; } 
-            set { buyPrice = value; } }
-        public float SalePrice {
-            get {  return salePrice; } 
-            set { salePrice = value; } 
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
         }
-        //public int Category { 
-        //    get { return category; }  
-        //    set { category = value; }
-        //} 
-        public DateTime CreationDate { 
+
+        public float BuyPrice
+        {
+            get { return buyPrice; }
+            set { buyPrice = value; }
+        }
+
+        public float SalePrice
+        {
+            get { return salePrice; }
+            set { salePrice = value; }
+        }
+
+        public int Amount
+        {
+            get { return amount; }
+            set { amount = value; }
+        }
+
+        public int Category
+        {
+            get { return category; }
+            set { category = value; }
+        }
+
+        public DateTime CreationDate
+        {
             get { return creationDate; }
-            set { creationDate = value; } 
+            set { creationDate = value; }
         }
-        public DateTime UpdateDate { 
-            get {   return updateDate; } 
-            set { updateDate = value; } 
+
+        public DateTime UpdateDate
+        {
+            get { return updateDate; }
+            set { updateDate = value; }
         }
-     }
+    }
 }

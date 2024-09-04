@@ -1,4 +1,5 @@
-﻿using Sistema_Ferreteria.Views.Products;
+﻿using Sistema_Ferreteria.Controllers;
+using Sistema_Ferreteria.Views.Products;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,9 @@ namespace Sistema_Ferreteria.Views
 {
     public partial class ProductTable : Form
     {
+        ProductoController controller = new ProductoController();
+        CategoryController categoryController = new CategoryController();
+
         public ProductTable()
         {
             InitializeComponent();
@@ -24,11 +28,52 @@ namespace Sistema_Ferreteria.Views
         private string editingID;
 
 
-            //funciones 
+        //funciones 
 
-        private void loadProducts()
+        public void loadProducts()
         {
-            dataGridView1.Rows.Add("prueba", "prueba", "prueba", "prueba", "5");
+            
+            var categories = categoryController.GetCategories();
+            var categoryDictionary = categories.ToDictionary(c => c.Id, c => c.Name);
+
+            
+            var products = controller.GetProducts();
+
+            
+            dataGridView1.Rows.Clear();
+
+           
+            foreach (var product in products)
+            {
+                
+                string categoryName = categoryDictionary.TryGetValue(product.Category, out var name) ? name : "Desconocida";
+
+                dataGridView1.Rows.Add(
+                    product.Id,
+                    product.Name,
+                    product.BuyPrice,
+                    product.SalePrice,
+                    product.Amount,
+                    categoryName, 
+                    product.CreationDate.ToShortDateString(),
+                    product.UpdateDate.ToShortDateString()
+                );
+            }
+        }
+
+        //hacer focus en el data grid
+        private void SetFocusOnDataGridViewRow(string id)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells[0].Value.ToString() == id) 
+                {
+                    dataGridView1.CurrentCell = row.Cells[0]; 
+                    row.Selected = true; 
+                    dataGridView1.Focus(); 
+                    break; 
+                }
+            }
         }
 
 
@@ -39,15 +84,15 @@ namespace Sistema_Ferreteria.Views
 
 
 
+        //eventos
 
-
-            //eventos
-      
         //categorias
         private void button6_Click(object sender, EventArgs e)
         {
             CategoryTable categoryTable = new CategoryTable();
             categoryTable.ShowDialog();
+            loadProducts();
+            
         }
 
         //iniciar sesion
@@ -62,13 +107,17 @@ namespace Sistema_Ferreteria.Views
         {
             ProductForm productForm = new ProductForm();
             productForm.ShowDialog();
+            loadProducts();
+
         }
 
         //buscar producto
         private void button3_Click(object sender, EventArgs e)
         {
             SearchProductTable searchProductTable = new SearchProductTable();
+            searchProductTable.setSearch(textBox1.Text);
             searchProductTable.ShowDialog();
+            loadProducts();
         }
 
         //1 click en datagridview
@@ -100,7 +149,9 @@ namespace Sistema_Ferreteria.Views
             if (e.RowIndex >= 0)
             {
                 EditProductForm editProductForm = new EditProductForm();
+                editProductForm.setEdit(editingID);
                 editProductForm.ShowDialog();
+                loadProducts();
             }
 
             
@@ -113,10 +164,13 @@ namespace Sistema_Ferreteria.Views
             {
                 currentValue -= 1;
                 textBox2.Text = currentValue.ToString();
+                controller.DecreaseQuantity(editingID, 1);
+                loadProducts();
+                SetFocusOnDataGridViewRow(editingID);
             }
             else
             {
-                MessageBox.Show("Por favor, ingresa un número válido.");
+                MessageBox.Show("Por favor, selecciona un producto.");
             }
         }
 
@@ -128,10 +182,13 @@ namespace Sistema_Ferreteria.Views
             {
                 currentValue += 1;
                 textBox2.Text = currentValue.ToString();
+                controller.IncreaseQuantity(editingID, 1);
+                loadProducts();
+                SetFocusOnDataGridViewRow(editingID);
             }
             else
             {
-                MessageBox.Show("Por favor, ingresa un número válido.");
+                MessageBox.Show("Por favor, selecciona un producto.");
             }
         }
 
