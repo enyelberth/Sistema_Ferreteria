@@ -41,8 +41,8 @@
             this.Precio_De_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Editado_El = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Creado_El = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editado_El = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,14 +133,15 @@
             this.Precio_De_Venta,
             this.Cantidad,
             this.Categoria,
-            this.Editado_El,
-            this.Creado_El});
+            this.Creado_El,
+            this.Editado_El});
             this.dataGridView1.Location = new System.Drawing.Point(47, 169);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(843, 387);
             this.dataGridView1.TabIndex = 15;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // ID
             // 
@@ -178,17 +179,17 @@
             this.Categoria.Name = "Categoria";
             this.Categoria.ReadOnly = true;
             // 
-            // Editado_El
-            // 
-            this.Editado_El.HeaderText = "Editado El";
-            this.Editado_El.Name = "Editado_El";
-            this.Editado_El.ReadOnly = true;
-            // 
             // Creado_El
             // 
             this.Creado_El.HeaderText = "Creado El";
             this.Creado_El.Name = "Creado_El";
             this.Creado_El.ReadOnly = true;
+            // 
+            // Editado_El
+            // 
+            this.Editado_El.HeaderText = "Editado El";
+            this.Editado_El.Name = "Editado_El";
+            this.Editado_El.ReadOnly = true;
             // 
             // SearchProductTable
             // 
@@ -225,7 +226,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_De_Venta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Editado_El;
         private System.Windows.Forms.DataGridViewTextBoxColumn Creado_El;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Editado_El;
     }
 }

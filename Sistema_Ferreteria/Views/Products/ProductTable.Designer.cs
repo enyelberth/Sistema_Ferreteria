@@ -28,14 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Creado_El = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Editado_El = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_De_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_de_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -47,56 +39,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_de_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_De_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Creado_El = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editado_El = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Creado_El
-            // 
-            this.Creado_El.HeaderText = "Creado El";
-            this.Creado_El.Name = "Creado_El";
-            this.Creado_El.ReadOnly = true;
-            // 
-            // Editado_El
-            // 
-            this.Editado_El.HeaderText = "Editado El";
-            this.Editado_El.Name = "Editado_El";
-            this.Editado_El.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // Precio_De_Venta
-            // 
-            this.Precio_De_Venta.HeaderText = "Precio De Venta";
-            this.Precio_De_Venta.Name = "Precio_De_Venta";
-            this.Precio_De_Venta.ReadOnly = true;
-            // 
-            // Precio_de_Compra
-            // 
-            this.Precio_de_Compra.HeaderText = "Precio de Compra";
-            this.Precio_de_Compra.Name = "Precio_de_Compra";
-            this.Precio_de_Compra.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
             // 
             // dataGridView1
             // 
@@ -113,8 +65,8 @@
             this.Precio_De_Venta,
             this.Cantidad,
             this.Categoria,
-            this.Editado_El,
-            this.Creado_El});
+            this.Creado_El,
+            this.Editado_El});
             this.dataGridView1.Location = new System.Drawing.Point(38, 241);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -248,6 +200,54 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Precio_de_Compra
+            // 
+            this.Precio_de_Compra.HeaderText = "Precio de Compra";
+            this.Precio_de_Compra.Name = "Precio_de_Compra";
+            this.Precio_de_Compra.ReadOnly = true;
+            // 
+            // Precio_De_Venta
+            // 
+            this.Precio_De_Venta.HeaderText = "Precio De Venta";
+            this.Precio_De_Venta.Name = "Precio_De_Venta";
+            this.Precio_De_Venta.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Creado_El
+            // 
+            this.Creado_El.HeaderText = "Creado El";
+            this.Creado_El.Name = "Creado_El";
+            this.Creado_El.ReadOnly = true;
+            // 
+            // Editado_El
+            // 
+            this.Editado_El.HeaderText = "Editado El";
+            this.Editado_El.Name = "Editado_El";
+            this.Editado_El.ReadOnly = true;
+            // 
             // ProductTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,15 +275,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn Creado_El;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Editado_El;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_De_Venta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_de_Compra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
@@ -295,5 +286,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_de_Compra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_De_Venta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Creado_El;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Editado_El;
     }
 }
