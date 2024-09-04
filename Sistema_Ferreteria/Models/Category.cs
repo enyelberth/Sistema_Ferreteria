@@ -2,24 +2,36 @@
 
 namespace Sistema_Ferreteria.Models
 {
-    class Category
+    public class Category
     {
-        private int id;
+        private string id;
         private string name;
         private DateTime creationDate;
         private DateTime updateDate;
 
-        // Constructor 
-        public Category(int id, string name)
+        // Constructor que genera un nuevo ID
+        public Category(string name)
+        {
+            this.id = Guid.NewGuid().ToString();
+            this.name = name;
+            this.creationDate = DateTime.Now;
+            this.updateDate = DateTime.Now;
+        }
+
+        // Constructor que recibe un ID
+        public Category(string id, string name, DateTime creationDate, DateTime updatedDate)
         {
             this.id = id;
             this.name = name;
-            this.creationDate = DateTime.Now; 
-            this.updateDate = DateTime.Now; 
+            this.creationDate = creationDate;
+            this.updateDate = updatedDate;
         }
 
+        // Constructor por defecto
+        public Category() { }
+
         // Propiedades
-        public int Id
+        public string Id
         {
             get { return id; }
             set { id = value; }
@@ -43,11 +55,11 @@ namespace Sistema_Ferreteria.Models
             set { updateDate = value; }
         }
 
-        // Método para actualizar la categoría
+
         public void Update(string newName)
         {
             this.name = newName;
-            this.updateDate = DateTime.Now; // Actualiza la fecha al momento de la modificación
+            this.updateDate = DateTime.Now;
         }
     }
 }

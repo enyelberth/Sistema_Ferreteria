@@ -15,6 +15,7 @@ namespace Sistema_Ferreteria.Views.Products
     {
 
         ProductoController controller = new ProductoController();
+        authController authController = new authController();
 
         private string search;
 
@@ -93,6 +94,12 @@ namespace Sistema_Ferreteria.Views.Products
         //reducir cantidad
         private void button4_Click(object sender, EventArgs e)
         {
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
+
             if (int.TryParse(textBox2.Text, out int currentValue))
             {
                 currentValue -= 1;
@@ -110,6 +117,13 @@ namespace Sistema_Ferreteria.Views.Products
         //aumentar cantidad
         private void button2_Click(object sender, EventArgs e)
         {
+
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
+
             if (int.TryParse(textBox2.Text, out int currentValue))
             {
                 currentValue += 1;
@@ -149,6 +163,12 @@ namespace Sistema_Ferreteria.Views.Products
         //doble click datagridview
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
             if (e.RowIndex >= 0)
             {
                 EditProductForm editProductForm = new EditProductForm();

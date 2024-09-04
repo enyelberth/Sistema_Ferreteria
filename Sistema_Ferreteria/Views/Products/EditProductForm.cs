@@ -1,7 +1,6 @@
 ﻿using Sistema_Ferreteria.Controllers;
 using Sistema_Ferreteria.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,7 +11,7 @@ namespace Sistema_Ferreteria.Views
         private ProductoController controller;
         private CategoryController categoryController;
 
-        private string editingId;
+        private string editingId; // Cambiar a Guid
 
         public EditProductForm()
         {
@@ -37,10 +36,10 @@ namespace Sistema_Ferreteria.Views
             comboBox1.ValueMember = "Value";
         }
 
-        public void setEdit(string id)
+        public void setEdit(string id) // Cambiar el tipo de id a Guid
         {
             editingId = id;
-            var product = controller.GetProductById(id);
+            var product = controller.GetProductById(id.ToString()); // Asegúrate de que GetProductById acepte un Guid
 
             if (product != null)
             {
@@ -81,19 +80,19 @@ namespace Sistema_Ferreteria.Views
                     int.TryParse(textBox5.Text, out int amount)
                 )
                 {
-                    // Obtener el ID de la categoría seleccionada
-                    int categoryId = ((dynamic)comboBox1.SelectedItem).Value;
+                    // Obtener el ID de la categoría seleccionada como Guid
+                    string categoryId = ((dynamic)comboBox1.SelectedItem).Value;
 
                     var updatedProduct = new ProductModel(
-                        editingId,
+                        editingId.ToString(), // Convertir editingId a string si es necesario
                         textBox2.Text,
                         buyPrice,
                         salePrice,
                         amount,
-                        categoryId // Usar ID de categoría
+                        categoryId // Usar ID de categoría como Guid
                     );
 
-                    if (controller.UpdateProduct(editingId, updatedProduct))
+                    if (controller.UpdateProduct(editingId.ToString(), updatedProduct)) // Asegúrate de que este método acepte un Guid
                     {
                         MessageBox.Show("Producto actualizado");
                     }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Sistema_Ferreteria.Controllers
 {
@@ -12,8 +13,16 @@ namespace Sistema_Ferreteria.Controllers
         // Crear (Agregar producto)
         public void AddProduct(ProductModel product)
         {
+            
+            if (productList.Any(p => p.Id == product.Id))
+            {
+                MessageBox.Show($"El producto con ID {product.Id} ya existe.");
+                return;
+            }
+
             product.CreationDate = DateTime.Now;
             product.UpdateDate = DateTime.Now;
+
             productList.Add(product);
         }
 
@@ -84,10 +93,6 @@ namespace Sistema_Ferreteria.Controllers
             return false;
         }
 
-        // Filtrar productos por categoría
-        public List<ProductModel> GetProductsByCategory(int categoryId)
-        {
-            return productList.Where(p => p.Category == categoryId).ToList();
-        }
+       
     }
 }

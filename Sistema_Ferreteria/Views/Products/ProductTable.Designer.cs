@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -67,10 +68,18 @@
             this.Categoria,
             this.Creado_El,
             this.Editado_El});
-            this.dataGridView1.Location = new System.Drawing.Point(38, 241);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Location = new System.Drawing.Point(34, 241);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(843, 387);
+            this.dataGridView1.Size = new System.Drawing.Size(958, 387);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -114,7 +123,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(752, 175);
+            this.textBox2.Location = new System.Drawing.Point(863, 175);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(60, 20);
@@ -127,7 +136,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(833, 167);
+            this.button2.Location = new System.Drawing.Point(944, 167);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(48, 35);
             this.button2.TabIndex = 6;
@@ -142,7 +151,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.Control;
-            this.button4.Location = new System.Drawing.Point(685, 167);
+            this.button4.Location = new System.Drawing.Point(796, 167);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(48, 35);
             this.button4.TabIndex = 7;
@@ -164,7 +173,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(746, 119);
+            this.label2.Location = new System.Drawing.Point(857, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 20);
             this.label2.TabIndex = 9;
@@ -179,7 +188,7 @@
             this.button5.ForeColor = System.Drawing.SystemColors.Control;
             this.button5.Location = new System.Drawing.Point(190, 19);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(128, 35);
+            this.button5.Size = new System.Drawing.Size(172, 35);
             this.button5.TabIndex = 10;
             this.button5.Text = "Iniciar Sesion";
             this.button5.UseVisualStyleBackColor = false;
@@ -235,24 +244,27 @@
             this.Categoria.HeaderText = "Categoria";
             this.Categoria.Name = "Categoria";
             this.Categoria.ReadOnly = true;
+            this.Categoria.Width = 170;
             // 
             // Creado_El
             // 
             this.Creado_El.HeaderText = "Creado El";
             this.Creado_El.Name = "Creado_El";
             this.Creado_El.ReadOnly = true;
+            this.Creado_El.Width = 120;
             // 
             // Editado_El
             // 
             this.Editado_El.HeaderText = "Editado El";
             this.Editado_El.Name = "Editado_El";
             this.Editado_El.ReadOnly = true;
+            this.Editado_El.Width = 120;
             // 
             // ProductTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 653);
+            this.ClientSize = new System.Drawing.Size(1021, 653);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label2);

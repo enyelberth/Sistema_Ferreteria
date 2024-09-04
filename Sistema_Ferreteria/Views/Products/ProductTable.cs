@@ -10,6 +10,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Sistema_Ferreteria.Views
 {
@@ -17,10 +19,19 @@ namespace Sistema_Ferreteria.Views
     {
         ProductoController controller = new ProductoController();
         CategoryController categoryController = new CategoryController();
+        authController authController = new authController();
 
         public ProductTable()
         {
             InitializeComponent();
+            if (authController.checkAuth())
+            {
+                button5.Text = "Generar Inventario";
+            }
+            else
+            {
+                button5.Text = "Autenticarse";
+            }
         }
 
         //variables
@@ -32,21 +43,19 @@ namespace Sistema_Ferreteria.Views
 
         public void loadProducts()
         {
-            
             var categories = categoryController.GetCategories();
             var categoryDictionary = categories.ToDictionary(c => c.Id, c => c.Name);
 
-            
             var products = controller.GetProducts();
-
             
+
             dataGridView1.Rows.Clear();
 
-           
             foreach (var product in products)
             {
                 
                 string categoryName = categoryDictionary.TryGetValue(product.Category, out var name) ? name : "Desconocida";
+               
 
                 dataGridView1.Rows.Add(
                     product.Id,
@@ -54,7 +63,7 @@ namespace Sistema_Ferreteria.Views
                     product.BuyPrice,
                     product.SalePrice,
                     product.Amount,
-                    categoryName, 
+                    categoryName,
                     product.CreationDate.ToShortDateString(),
                     product.UpdateDate.ToShortDateString()
                 );
@@ -76,7 +85,41 @@ namespace Sistema_Ferreteria.Views
             }
         }
 
+        private void SaveInventory()
+        {
+            var categories = categoryController.GetCategories();
+            var products = controller.GetProducts();
 
+            var jsonData = new
+            {
+                categories,
+                products
+            };
+
+
+            string json = JsonConvert.SerializeObject(jsonData, Formatting.Indented);
+
+
+            DateTime date = DateTime.UtcNow;
+
+
+            string formattedDate = date.ToString("yyyy-MM-dd");
+
+
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = Path.Combine(desktopPath, $"{formattedDate}-inventario.json");
+
+            try
+            {
+
+                File.WriteAllText(filePath, json);
+                MessageBox.Show($"{formattedDate}-inventario.json creado en el escritorio");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al crear el archivo: {ex.Message}");
+            }
+        }
 
 
 
@@ -89,22 +132,45 @@ namespace Sistema_Ferreteria.Views
         //categorias
         private void button6_Click(object sender, EventArgs e)
         {
+
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
+
             CategoryTable categoryTable = new CategoryTable();
             categoryTable.ShowDialog();
             loadProducts();
             
         }
 
-        //iniciar sesion
+        //iniciar sesion/guardar archivo
         private void button5_Click(object sender, EventArgs e)
         {
-            Login login = new Login();  
-            login.ShowDialog();
+            if (authController.checkAuth())
+            {
+                SaveInventory();
+            }
+            else
+            {
+                Login login = new Login();
+                login.ShowDialog();
+                if (authController.checkAuth())
+                {
+                    button5.Text = "Generar Inventario";
+                }
+            }
         }
 
         //crear producto
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
             ProductForm productForm = new ProductForm();
             productForm.ShowDialog();
             loadProducts();
@@ -146,6 +212,13 @@ namespace Sistema_Ferreteria.Views
         //doble click datagridview
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
+
             if (e.RowIndex >= 0)
             {
                 EditProductForm editProductForm = new EditProductForm();
@@ -160,6 +233,12 @@ namespace Sistema_Ferreteria.Views
         //reducir cantidad
         private void button4_Click(object sender, EventArgs e)
         {
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
+
             if (int.TryParse(textBox2.Text, out int currentValue))
             {
                 currentValue -= 1;
@@ -178,6 +257,12 @@ namespace Sistema_Ferreteria.Views
         //aumentar cantidad
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
+
             if (int.TryParse(textBox2.Text, out int currentValue))
             {
                 currentValue += 1;
@@ -197,8 +282,13 @@ namespace Sistema_Ferreteria.Views
         //cerrar ventana
         private void ProductTable_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
+            
+            
             Application.Exit();
         }
+
+        
 
 
         //abrir ventana
