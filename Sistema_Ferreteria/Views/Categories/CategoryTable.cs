@@ -15,9 +15,10 @@ namespace Sistema_Ferreteria.Views
     public partial class CategoryTable : Form
     {
 
-        private int editingId;
+        private string editingId;
 
         CategoryController controller = new CategoryController();
+        authController authController = new authController();
         public CategoryTable()
         {
             InitializeComponent();
@@ -55,6 +56,12 @@ namespace Sistema_Ferreteria.Views
         //crear categoria
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
+
             CategoryForm categoryForm = new CategoryForm();
 
             categoryForm.ShowDialog();
@@ -69,6 +76,12 @@ namespace Sistema_Ferreteria.Views
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para Realizar esta accion necesita autenticacion");
+                return;
+            }
 
             if (e.RowIndex >= 0)
             {
@@ -89,7 +102,7 @@ namespace Sistema_Ferreteria.Views
         {
             if (e.RowIndex >= 0)
             {
-                editingId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                editingId = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
 
                 
             }

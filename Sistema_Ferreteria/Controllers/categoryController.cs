@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
+using System.Xml.Linq;
 using Sistema_Ferreteria.Models;
 
 namespace Sistema_Ferreteria.Controllers
@@ -12,19 +14,24 @@ namespace Sistema_Ferreteria.Controllers
         // Constructor
         public CategoryController()
         {
-            
         }
 
-        // agregar
+        // Agregar una nueva categoría
         public void AddCategory(string name)
         {
-            int newId = categories.Count > 0 ? categories.Max(c => c.Id) + 1 : 1;
-            var newCategory = new Category(newId, name);
+            var newCategory = new Category(name);
             categories.Add(newCategory);
         }
 
-        //actualizar una categoría
-        public bool UpdateCategory(int id, string newName)
+        public void addCategoryWid(string id, string name, DateTime creationDate, DateTime updatedDate)
+        {
+            var newCategory = new Category( id,  name,  creationDate,  updatedDate);
+            
+            categories.Add(newCategory);
+        }
+
+        // Actualizar una categoría
+        public bool UpdateCategory(string id, string newName)
         {
             var category = categories.FirstOrDefault(c => c.Id == id);
             if (category != null)
@@ -35,20 +42,20 @@ namespace Sistema_Ferreteria.Controllers
             return false;
         }
 
-        //obtener todas las categorías
+        // Obtener todas las categorías
         public List<Category> GetCategories()
         {
             return categories;
         }
 
-        //obtener una categoría por ID
-        public Category GetCategoryById(int id)
+        // Obtener una categoría por ID
+        public Category GetCategoryById(string id)
         {
             return categories.FirstOrDefault(c => c.Id == id);
         }
 
-        //eliminar una categoría
-        public bool DeleteCategory(int id)
+        // Eliminar una categoría
+        public bool DeleteCategory(string id)
         {
             var category = categories.FirstOrDefault(c => c.Id == id);
             if (category != null)

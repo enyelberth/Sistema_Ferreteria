@@ -15,7 +15,7 @@ namespace Sistema_Ferreteria.Views
     public partial class EditCategoryForm : Form
     {
 
-        private int editingId;
+        private string editingId;
 
         CategoryController categoryController = new CategoryController();
 
@@ -30,7 +30,7 @@ namespace Sistema_Ferreteria.Views
             categoryController.UpdateCategory(editingId, textBox2.Text);
         }
 
-        public void setEdit(int id)
+        public void setEdit(string id)
         {
             editingId = id;
 

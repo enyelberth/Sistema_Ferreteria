@@ -1,79 +1,33 @@
 ﻿using System;
 
-namespace Sistema_Ferreteria.Models // Asegúrate de que el nombre del espacio de nombres sea correcto
+namespace Sistema_Ferreteria.Models
 {
     public class ProductModel
     {
-        // Campos privados
-        private string id;
-        private string name;
-        private float buyPrice;
-        private float salePrice;
-        private int amount;
-        private int category;
-        private DateTime creationDate;
-        private DateTime updateDate;
+        // Campos y propiedades
+        public string Id { get; set; } 
+        public string Name { get; set; }
+        public float BuyPrice { get; set; }
+        public float SalePrice { get; set; }
+        public int Amount { get; set; }
+        public string Category { get; set; } 
+        public DateTime CreationDate { get; set; }
+        public DateTime UpdateDate { get; set; }
 
         // Constructor
-        public ProductModel(string id, string name, float buyPrice, float salePrice, int amount, int category)
+        public ProductModel(string id, string name, float buyPrice, float salePrice, int amount, string category)
         {
-            this.id = id;
-            this.name = name;
-            this.buyPrice = buyPrice;
-            this.salePrice = salePrice;
-            this.amount = amount;
-            this.category = category; 
-            this.creationDate = DateTime.Now.Date; 
-            this.updateDate = DateTime.Now.Date; 
+            Id = id; 
+            Name = name;
+            BuyPrice = buyPrice;
+            SalePrice = salePrice;
+            Amount = amount;
+            Category = category;
+            CreationDate = DateTime.Now;
+            UpdateDate = DateTime.Now;
         }
 
-        // Propiedades públicas
-        public string Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public float BuyPrice
-        {
-            get { return buyPrice; }
-            set { buyPrice = value; }
-        }
-
-        public float SalePrice
-        {
-            get { return salePrice; }
-            set { salePrice = value; }
-        }
-
-        public int Amount
-        {
-            get { return amount; }
-            set { amount = value; }
-        }
-
-        public int Category
-        {
-            get { return category; }
-            set { category = value; }
-        }
-
-        public DateTime CreationDate
-        {
-            get { return creationDate; }
-            set { creationDate = value; }
-        }
-
-        public DateTime UpdateDate
-        {
-            get { return updateDate; }
-            set { updateDate = value; }
-        }
+        // Constructor sin parámetros
+        public ProductModel() { }
     }
 }
