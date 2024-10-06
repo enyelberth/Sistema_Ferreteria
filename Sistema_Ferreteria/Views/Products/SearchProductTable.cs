@@ -102,9 +102,8 @@ namespace Sistema_Ferreteria.Views.Products
 
             if (int.TryParse(textBox2.Text, out int currentValue))
             {
-                currentValue -= 1;
-                textBox2.Text = currentValue.ToString();
-                controller.DecreaseQuantity(editingID, 1);
+                textBox2.Text = "1";
+                controller.DecreaseQuantity(editingID, currentValue);
                 loadProducts();
                 SetFocusOnDataGridViewRow(editingID);
             }
@@ -126,9 +125,8 @@ namespace Sistema_Ferreteria.Views.Products
 
             if (int.TryParse(textBox2.Text, out int currentValue))
             {
-                currentValue += 1;
-                textBox2.Text = currentValue.ToString();
-                controller.IncreaseQuantity(editingID, 1);
+                textBox2.Text = "1";
+                controller.IncreaseQuantity(editingID, currentValue);
                 loadProducts();
                 SetFocusOnDataGridViewRow(editingID);
             }
@@ -150,7 +148,8 @@ namespace Sistema_Ferreteria.Views.Products
 
                     if (cellValue != null)
                     {
-                        textBox2.Text = cellValue.ToString();
+                        textBox2.Text = "1";
+                        textBox2.ReadOnly = false;
                     }
                     else
                     {
@@ -178,6 +177,50 @@ namespace Sistema_Ferreteria.Views.Products
             }
 
 
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (!authController.checkAuth())
+            {
+                MessageBox.Show("Para realizar esta acción necesita autenticación");
+                return;
+            }
+
+            if (editingID != "")
+            {
+                var result = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar este producto?",
+                    "Confirmar Eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    textBox2.Text = "1"; 
+                    controller.DeleteProduct(editingID);
+                    editingID = "";
+                    loadProducts();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Para eliminar, seleccione el ID de un producto");
+            }
         }
     }
 }

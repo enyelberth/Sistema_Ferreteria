@@ -1,30 +1,18 @@
 ﻿using Sistema_Ferreteria.Controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using Sistema_Ferreteria.Views.UI;
 
-namespace Sistema_Ferreteria.Views
+namespace Sistema_Ferreteria.Views.UI
 {
-    public partial class Login : Form
+    public partial class ChangePassword : Form
     {
-
-        authController authController =new authController();
-
-        public Login()
+        public ChangePassword()
         {
             InitializeComponent();
         }
-
-        //funciones
 
         private static readonly byte[] Key = Encoding.UTF8.GetBytes("58742amonus3$%/*"); // 16 bytes para AES-128
         private static readonly byte[] IV = Encoding.UTF8.GetBytes("58742amonus3$%/*"); // 16 bytes para AES
@@ -69,26 +57,47 @@ namespace Sistema_Ferreteria.Views
             }
         }
 
-        private void handleSubmit()
+        private string Encrypt(string plainText)
         {
-            string credentials = ReadCredentials();
-
-            if (credentials != null)
+            using (Aes aes = Aes.Create())
             {
-                
-                if (textBox1.Text == "admin" && textBox2.Text == credentials)
+                aes.Key = Key;
+                aes.IV = IV;
+
+                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+                using (MemoryStream msEncrypt = new MemoryStream())
                 {
-                    MessageBox.Show("Autenticado Correctamente");
-                    authController.login();
-                    this.Close();
-                    return;
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+                            swEncrypt.Write(plainText);
+                        }
+                        return Convert.ToBase64String(msEncrypt.ToArray());
+                    }
                 }
             }
+        }
 
-            if (textBox2.Text == "468CRed$" && textBox1.Text == "admin")
+        private void handleSubmit()
+        {
+            string currentPassword = ReadCredentials();
+
+           
+            if (currentPassword == null)
             {
-                MessageBox.Show("Autenticado Correctamente");
-                authController.login();
+                currentPassword = "468CRed$";
+            }
+
+            if (textBox1.Text == currentPassword)
+            {
+               
+                string newPassword = textBox2.Text;
+                string encryptedPassword = Encrypt(newPassword);
+
+                File.WriteAllText("data.aes", encryptedPassword);
+
+                MessageBox.Show("Contraseña guardada correctamente.");
                 this.Close();
             }
             else
@@ -97,17 +106,9 @@ namespace Sistema_Ferreteria.Views
             }
         }
 
-        //eventos
-
         private void button1_Click(object sender, EventArgs e)
         {
             handleSubmit();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-            ChangePassword changePassword = new ChangePassword();
-            changePassword.ShowDialog();
         }
     }
 }
